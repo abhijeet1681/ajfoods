@@ -1,11 +1,11 @@
-import Logo from "../assets/images/png-clipart-logo-brand-font-food-product-restaurant-logo-design-food-label-thumbnail-removebg-preview.png";
+import Logo from "../assets/images/png-clipart-logo-brand-font-food-product-restaurant-logo-design-food-label-thumbnail-removebg-previeww-removebg-preview.png";
 
 const Header = () => {
   return (
     <nav className="navbar p-0 navbar-expand-sm bg-light navbar-light">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          <img src={Logo} style={{ width: "80px" }} />
+          <img src={Logo} style={{ width: "90px" }} />
         </a>
         <button
           className="navbar-toggler"
