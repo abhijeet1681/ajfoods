@@ -1,6 +1,11 @@
 .custom-card{
   width:100%;
   max-width:300px;
+  transition: transform .3s;
+}
+
+.custom-card:hover{
+  transform: scale(0.8);
 }
 
 .custom-card img{
@@ -8,4 +13,30 @@
   height:200px;
   object-fit:cover;
   border-radius: 20px;
+  transform: scale(0.90);
+  cursor: pointer;
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.shop-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%; /* Adjust the width as needed */
+  display: block;
+}
+.cuisines {
+-webkit-font-smoothing: antialiased;
+font-family: Basis_Grotesque_Pro;
+font-weight: 200;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.3px;
+color: rgba(2, 6, 12, 0.6);
+overflow: hidden;
+width: 100%;
+display: -webkit-box;
+overflow-wrap: break-word;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
 }
