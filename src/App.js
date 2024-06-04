@@ -22,7 +22,7 @@ import "./App.css";
 import Logo from "./assets/images/png-clipart-logo-brand-font-food-product-restaurant-logo-design-food-label-thumbnail-removebg-previeww-removebg-preview.png"
 import Header from "./components/Header";
 import Body from "./components/Body";
-// import Footer123 from "./components/Footer";
+import Footer from "./components/Footer";
 
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
     <>
       <Header />
       <Body />
-      {/* <Footer123 /> */}
+      <Footer />
     </>
   );
 };
