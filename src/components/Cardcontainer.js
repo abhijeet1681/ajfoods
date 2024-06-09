@@ -179,6 +179,7 @@ const Cardcontainer = () => {
         restaurant?.info?.avgRating>=4.5
       )
     })
+    console.log("restaurants", restaurants);
   }
   return (
     <div className="container d-flex flex-wrap gap-4">
