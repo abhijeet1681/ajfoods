@@ -171,10 +171,18 @@ import { restaurantList } from "../const/config";
 
 const Cardcontainer = () => {
   console.log("restaurantList", restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  const restaurants = restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+  let restaurants = restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
+  const filterRestaurants = () =>{
+    restaurants = restaurants.filter((restaurant)=>{
+      return(
+        restaurant?.info?.avgRating>=4.5
+      )
+    })
+  }
   return (
     <div className="container d-flex flex-wrap gap-4">
+    <button onClick={filterRestaurants}>Top Rated Restaurant</button>
       {
         restaurants.map((restaurant)=>{
           return(
