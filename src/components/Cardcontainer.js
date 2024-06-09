@@ -168,24 +168,36 @@
 
 import Restaurantcard from "./Restaurantcard";
 import { restaurantList } from "../const/config";
+import { useState } from "react";
 
 const Cardcontainer = () => {
+  const [restaurantData, setRestaurantData] = useState(restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  const[text, setText] = useState("");
+
+
+
   console.log("restaurantList", restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  let restaurants = restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+  // setRestaurantData(restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
   const filterRestaurants = () =>{
-    restaurants = restaurants.filter((restaurant)=>{
+    const restaurants = restaurantData.filter((restaurant)=>{
       return(
         restaurant?.info?.avgRating>=4.5
       )
     })
-    console.log("restaurants", restaurants);
+    setRestaurantData(restaurants);
   }
   return (
-    <div className="container d-flex flex-wrap gap-4">
+    <>
+    <input type="text" value={text} onChange={(e)=>{setText(e.target.value)}}/>
     <button onClick={filterRestaurants}>Top Rated Restaurant</button>
+    <h1>{text}</h1>
+    <h2>{text}</h2>
+    <h3>{text}</h3>
+    <h4>{text}</h4>
+    <div className="container d-flex flex-wrap gap-4">
       {
-        restaurants.map((restaurant)=>{
+        restaurantData.map((restaurant)=>{
           return(
             <Restaurantcard
             key = {restaurant?.info?.id}
@@ -202,6 +214,8 @@ const Cardcontainer = () => {
         
       }
     </div>
+    </>
+      
   );
 };
 
