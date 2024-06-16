@@ -74,4 +74,17 @@ Two types which we are going to use
 
 1) Default import/exports
 2) Named imports/exports
-3) React Hooks : use State, use Effect
+3) React Hooks : use State, use Effect 
+(React Hook is a normal javascript function)
+
+difference between state variable and normal variable?
+Read documentation (UseState in react)
+
+#useEffect
+useEffect is used to handle side effects in functional components. It takes a function as an argument which
+There are 2 arguments a> callback function (compulsory) 
+                      b> dependency array (optional)
+
+#case 1 : empty dependency array : useEffect is called only once after initial render
+#case 2 : no dependency array : useEffect is called after every render
+#case 3 : dependency array with dependemcies : useEffect is called after dependencies are changed

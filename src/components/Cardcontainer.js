@@ -168,16 +168,35 @@
 
 import Restaurantcard from "./Restaurantcard";
 import { restaurantList } from "../const/config";
-import { useState } from "react";
+import {useState, useEffect} from "react";
 
 const Cardcontainer = () => {
   const [restaurantData, setRestaurantData] = useState(restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  const [count, setCount] = useState(0)
   // const[text, setText] = useState("");
   // let text=""
 
 
 
-  console.log("restaurantList", restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  // console.log("api is called");
+  //apiCall();
+  const getRestaurants = async() =>{
+    // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    // const json = await data.json();
+    // console.log("json", json);
+    console.log("json");
+    // setRestaurantData(json);
+  }
+  // getRestaurants();
+
+
+  useEffect(()=>{
+    getRestaurants();
+    console.log("useEffect is called")
+  }, [])
+
+  console.log("component is rendered")
+  // console.log("restaurantList", restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   // setRestaurantData(restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
   const filterRestaurants = () =>{
@@ -195,6 +214,8 @@ const Cardcontainer = () => {
       console.log("text", text)
     }}/> */}
     <button onClick={filterRestaurants}>Top Rated Restaurant</button>
+    <h1>Count is {count}</h1>
+    <button onClick={()=>setCount(count+1)}>Increment</button>
     {/* <h1>{text}</h1>
     <h2>{text}</h2>
     <h3>{text}</h3>
