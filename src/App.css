@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  /* font-family: Arial, Helvetica, sans-serif; */
+}
 .custom-card{
   width:100%;
   max-width:300px;
@@ -8,7 +12,9 @@
   justify-content: center;
   justify-content: space-between; */
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .custom-card:hover{
   transform: scale(0.8);
 }
