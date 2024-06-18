@@ -2,6 +2,11 @@
   width:100%;
   max-width:300px;
   transition: transform .3s;
+  cursor: pointer;
+  box-sizing: border-box;
+  /* align-items: center;
+  justify-content: center;
+  justify-content: space-between; */
 }
 
 .custom-card:hover{
@@ -39,4 +44,72 @@ display: -webkit-box;
 overflow-wrap: break-word;
 -webkit-line-clamp: 1;
 -webkit-box-orient: vertical;
+}
+.navbar{
+  /* background-color: #f8cb46; */
+  background: linear-gradient(90deg, #f9ce34, #ee2a7b);
+}
+
+.me-5{
+  font-size: 150%;
+  font-weight: 500;
+}
+
+.footer{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: black;
+  color: white;
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+}
+.second-footer{
+  padding: 30px;
+  text-align: center;
+  font-weight: 10px;
+  background-color: #f6a247;
+  /* 41536 */
+}
+.appstore, .playstore{
+  height: 48px;
+  max-width: 160px;
+  margin: auto;
+}
+.button{
+  text-align: center;
+  padding: 15px;
+  background-color: rgb(235, 177, 122);
+  margin:20px 20px 20px 20px;
+}
+.button,button{
+  color: black;
+  font-weight: 20px;
+  border: none;
+}
+.name{
+ text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+
+}
+.cuisines{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.custom-input{
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 30px;
+}
+.shimmerline{
+  height: 10px;
+  background-color: rgb(235, 231, 231);
+}
+.shimmer-img{
+  height: 200px;
+  width: 100%;
+  background-color: rgb(223, 220, 220);
 }

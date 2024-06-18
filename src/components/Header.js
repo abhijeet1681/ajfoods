@@ -37,7 +37,8 @@
 
 const Header = () => {
   return (
-    <nav className="navbar p-0 navbar-expand-sm bg-info navbar-light">
+    <nav className="navbar p-0 navbar-expand-sm navbar-light">
+    {/* <nav className="navbar p-0 navbar-expand-sm bg-warning navbar-light"> */}
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           <img src={Logo} style={{ width: "90px" }} />
@@ -57,22 +58,22 @@ const Header = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Home🛖
+                <b>Home🛖</b>
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                About Us😶‍🌫️
+              <b>About Us😶‍🌫️</b>
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Contact us📞
+              <b>Contact us📞</b>
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Cart🛒
+              <b>Cart🛒</b>
               </a>
             </li>
           </ul>
