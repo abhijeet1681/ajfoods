@@ -53,7 +53,9 @@ overflow-wrap: break-word;
 }
 .navbar{
   /* background-color: #f8cb46; */
-  background: linear-gradient(90deg, #f9ce34, #ee2a7b);
+  /* background: linear-gradient(90deg, #f9ce34, #ee2a7b); */
+  /* background: linear-gradient(90deg, #FF671F, #ee2a7b); */
+  background: linear-gradient(90deg, #FF671F,#FFFFFF,#046A38);
 }
 
 .me-5{
