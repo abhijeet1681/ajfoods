@@ -273,7 +273,7 @@ const Cardcontainer = () => {
   }
 
   const filterData = () => {
-    const filteredData = restaurantCollection.filter((restaurant) => {
+    const filteredData = restaurantData.filter((restaurant) => {
      return restaurant?.info?.name.toLowerCase().includes(searchtext.toLowerCase())
     })
     console.log("filtered data ",filteredData);
