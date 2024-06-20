@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   /* font-family: Arial, sans-serif; */
   margin: auto;
@@ -6,6 +9,7 @@ body {
 }
 .custom-card{
   width:100%;
+  margin: auto;
   max-width:300px;
   transition: transform .3s;
   cursor: pointer;
@@ -129,4 +133,28 @@ white-space: nowrap;
   height: 200px;
   width: 100%;
   background-color: rgb(223, 220, 220);
+}
+.overlay {
+  position: fixed;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+/* .container:hover .overlay {
+  opacity: 1;
+} */
+
+.custom_input {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 25px;
 }

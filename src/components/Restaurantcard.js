@@ -30,7 +30,7 @@ import { IMG_URL } from "../const/config";
 const Restaurantcard = ({cloudinaryImageId, name, avgRating, sla, cuisines, areaName}) => {
   // imgUrl, title, starRating, deliveryTime, cuisines, location--------------------
     return(
-      <div className="custom-card">
+      <div className="custom-card container-fluid">
         <div className="mb-2">
           <img 
          src={IMG_URL+cloudinaryImageId}
