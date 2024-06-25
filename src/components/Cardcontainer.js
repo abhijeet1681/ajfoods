@@ -249,6 +249,7 @@
 // Nikhil Sir Method --- Type-4[Using Api Call]
 
 import Restaurantcard from "./Restaurantcard";
+import Shimmer from "./Shimmer";
 import {useState, useEffect} from "react";
 
 const Cardcontainer = () => {
@@ -273,23 +274,23 @@ const Cardcontainer = () => {
     setRestaurantData(filteredData);
  } 
  
-//  const handleVeg = () =>{
-//   const filteredData = restaurantCollection.filter((restaurant) => {
-//     return restaurant?.info?.veg
-//    })
-//    setRestaurantData(filteredData);
-// }
+ const handleVeg = () =>{
+  const filteredData = restaurantCollection.filter((restaurant) => {
+    return restaurant?.info?.veg
+   })
+   setRestaurantData(filteredData);
+}
 
-// const handleRating = () =>{
-//   const filteredData = restaurantCollection.filter((restaurant) => {
-//     return restaurant?.info?.avgRating >= 4.5
-//    })
-//    setRestaurantData(filteredData);
-// }
+const handleRating = () =>{
+  const filteredData = restaurantCollection.filter((restaurant) => {
+    return restaurant?.info?.avgRating >= 4.5
+   })
+   setRestaurantData(filteredData);
+}
 
-// const reset = () =>{
-//   setRestaurantData( restaurantCollection)
-// }
+const reset = () =>{
+  setRestaurantData( restaurantCollection)
+}
 
 // useEffect(() =>{
 //   const getRestaurants = async()  =>{
@@ -363,6 +364,7 @@ const Cardcontainer = () => {
     const getRestaurants = async() =>{
       const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await data.json();
+      setLoading(false);
       console.log("json", json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setRestaurantData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setRestaurantCollection(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
@@ -372,6 +374,14 @@ const Cardcontainer = () => {
   }, [])
 
   console.log("component is rendered")
+
+  if(loading){
+  return (
+    <div className="container d-flex flex-wrap gap-4">
+  <Shimmer/>
+  </div>
+  )
+}
 
   return (
     <div>
