@@ -168,3 +168,14 @@ white-space: nowrap;
   width: 100%;
   background-color: #f0eeee;
 }
+
+.noRestaurantFound {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.noRestaurantImage {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}

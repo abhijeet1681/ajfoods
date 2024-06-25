@@ -395,7 +395,7 @@ const reset = () =>{
         <button className="btn btn-lg btn-light" onClick={filterData}>🔍</button>
     <div className="container d-flex flex-wrap gap-4">
       {
-        restaurantData.map((restaurant)=>{
+        restaurantData.length!==0 ? restaurantData.map((restaurant) => {
           return(
             <Restaurantcard
             key = {restaurant?.info?.id}
@@ -407,13 +407,16 @@ const reset = () =>{
         // location={restaurant?.info?.areaName}
         {...restaurant?.info}
         />
-          )
-        })
-        
-      }
-    </div>
-    </div>
-    </div>
+          );
+        }) : (
+          <div style={{ textAlign: 'center', width: '100%' }}>
+            {/* <h1>No Restaurant Found</h1> */}
+            <img src="noimg.png " alt="No Restaurant Found" style={{ maxWidth: '100%', height: '400px' }} />
+          </div>
+        )}
+        </div>
+        </div>
+</div>
       
   );
 };
