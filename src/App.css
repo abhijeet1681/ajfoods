@@ -24,6 +24,14 @@ html {
 .custom-card:hover{
   transform: scale(0.8);
 }
+.abhijeet{
+  text-align: center;
+  justify-content: center;
+}
+.sumiti{
+    color: goldenrod;
+    font-size: 60px;
+}
 .restaurant-list{
   display: flex;
   flex-wrap: wrap;

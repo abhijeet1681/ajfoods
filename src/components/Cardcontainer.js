@@ -362,12 +362,20 @@ const reset = () =>{
 
   useEffect(()=>{
     const getRestaurants = async() =>{
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      try{
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await data.json();
       setLoading(false);
       console.log("json", json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setRestaurantData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setRestaurantCollection(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      }
+      catch(err){
+        setLoading(false);
+        setIsFailed(true);
+        console.log("something went wrong",err)
+      }
+      
     }
     getRestaurants();
     console.log("useEffect is called")
@@ -382,6 +390,16 @@ const reset = () =>{
   </div>
   )
 }
+
+  if(isfailed){
+    return(
+      <div className="abhijeet justify-content-center">
+        <img src="./45.jpg"/>
+        <h1 className="sumiti">Ooops...</h1>
+        <h2 className="sumiti">Something Went Wrong</h2>
+      </div>
+    )
+  }
 
   return (
     <div>
