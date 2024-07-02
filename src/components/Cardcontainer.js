@@ -251,6 +251,8 @@
 import Restaurantcard from "./Restaurantcard";
 import Shimmer from "./Shimmer";
 import {useState, useEffect} from "react";
+// import "slick-carousel/slick/slick.css"; 
+// import "slick-carousel/slick/slick-theme.css";
 
 const Cardcontainer = () => {
   const [count, setCount] = useState(0)
@@ -270,9 +272,15 @@ const Cardcontainer = () => {
     const filteredData = restaurantCollection.filter((restaurant) => {
      return restaurant?.info?.name.toLowerCase().includes(searchtext.toLowerCase())
     })
-    console.log("filtered data ",filteredData);
+    console.log("filteredData", filteredData);
     setRestaurantData(filteredData);
  } 
+    const handleDelivery = () =>{
+       const filterData = restaurantCollection.filter((restaurant) =>{
+        return restaurant?.info?.sla?.deliveryTime <=30
+      })
+      setRestaurantData(filterData);
+   }
  
  const handleVeg = () =>{
   const filteredData = restaurantCollection.filter((restaurant) => {
@@ -403,6 +411,7 @@ const reset = () =>{
 
   return (
     <div>
+      <div className="d-flex justify-between">
       <div className="container my-3">
         {/* <input type="text" className="custom_input" placeholder="Enter name of restaurant" value={searchtext} onChange={handleSearchText} /> */}
         <input type="text" 
@@ -411,6 +420,18 @@ const reset = () =>{
         value={searchtext}
         onChange={handleSearchText} />
         <button className="btn btn-lg btn-light" onClick={filterData}>🔍</button>
+      </div>
+      <div className="d-flex gap-2 h-50">
+        {/* <div className="flex gap-10 text-lg font-normal text-[#747474]">
+      <span class="relative"><select class=" bg-white border border-gray-300 rounded-md px-3 py-1 outline-none" fdprocessedid="8w47aj"><option value="">Fast Delivery</option><option value="20-30">20-30 min</option><option value="30-40">30-40 min</option><option value="40-50">40-50 min</option></select></span>
+      <span class="relative"><select class="bg-white border border-gray-300 rounded-md px-3 py-1 outline-none" fdprocessedid="qip0ox"><option value="">Rating</option><option value="4">4 and above</option><option value="3">3 and above</option><option value="2">2 and above</option><option value="1">1 and above</option></select></span> */}
+        <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-2" onClick={handleDelivery}>Fast Delivery</button>
+        <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-2" onClick={handleRating}>Top Rated</button>
+        <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-2" onClick={handleVeg}>Pure Veg</button>
+        <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-2" onClick={reset}>Show All</button>
+      </div>
+      </div>
+      
     <div className="container d-flex flex-wrap gap-4">
       {
         restaurantData.length!==0 ? restaurantData.map((restaurant) => {
@@ -433,7 +454,7 @@ const reset = () =>{
           </div>
         )}
         </div>
-        </div>
+        
 </div>
       
   );

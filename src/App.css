@@ -10,7 +10,7 @@ body {
 .custom-card{
   width:100%;
   margin: auto;
-  max-width:250px;
+  max-width: 300px;
   transition: transform .3s;
   cursor: pointer;
   box-sizing: border-box;
@@ -18,16 +18,29 @@ body {
   justify-content: center;
   justify-content: space-between; */
 }
+.navbar{
+  box-shadow: 1px 4px 4px rgba(107, 102, 102, 0.5);
+}
 html {
   scroll-behavior: smooth;
 }
 .custom-card:hover{
   transform: scale(0.8);
 }
+.card-cuisine, .name{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%; /* Adjust the width as needed */
+  display: block;
+}
 .abhijeet{
   text-align: center;
   justify-content: center;
 }
+/* .Active:active{
+  background-color: black;
+} */
 .sumiti{
     color: goldenrod;
     font-size: 60px;
@@ -197,3 +210,33 @@ white-space: nowrap;
 .searchbar div div {
   border-radius: 30px !important;
 }
+.ai {
+  width: 9em;
+  height: 3em;
+  /* border-radius: 30em; */
+  font-size: 15px;
+  font-family: inherit;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 6px 6px 12px #c5c5c5,
+ }
+ 
+ button::after {
+  content: '';
+  width: 0;
+  height: 3em;
+  /* border-radius: 30em; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #FF671F,#FFFFFF,#046A38 100%);
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+ }
+ 
+ button:hover::before {
+  width: 9em;
+ }
