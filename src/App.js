@@ -33,7 +33,7 @@ const App = () => {
       <Header />
       <Outlet/>
       {/* <Body /> */}
-      {/* <Footer123 /> */}
+      <Footer/>
     </>
   );
 };
