@@ -482,8 +482,8 @@ const reset = () =>{
         onChange={handleSearchText} />
         <button className="btn btn-lg btn-light" onClick={filterData}>🔍</button>
       </div>
-      <div className="d-flex gap-2 h-50">.
-      <div class="relative mt-3"><select class=" bg-white border border-gray-300 rounded-md px-3 py-1 outline-none"><option value=""><b>Sort By</b></option><option value="20-30">Fast Delivery</option><option value="30-40">Top Rated</option><option value="40-50">Low to High</option><option value="30-40">High to Low</option></select></div>
+      <div className="d-flex gap-2 h-50">
+      <div class="relative mt-2"><select class=" bg-white border border-gray-300 rounded-md px-3 py-2 outline-none"><option value=""><b>Sort By</b></option><option value="20-30">Fast Delivery</option><option value="30-40">Top Rated</option><option value="40-50">Low to High</option><option value="30-40">High to Low</option></select></div>
         {/* <div className="flex gap-10 text-lg font-normal text-[#747474]">
       <span class="relative"><select class=" bg-white border border-gray-300 rounded-md px-3 py-1 outline-none" fdprocessedid="8w47aj"><option value="">Fast Delivery</option><option value="20-30">20-30 min</option><option value="30-40">30-40 min</option><option value="40-50">40-50 min</option></select></span>
       <span class="relative"><select class="bg-white border border-gray-300 rounded-md px-3 py-1 outline-none" fdprocessedid="qip0ox"><option value="">Rating</option><option value="4">4 and above</option><option value="3">3 and above</option><option value="2">2 and above</option><option value="1">1 and above</option></select></span> */}
