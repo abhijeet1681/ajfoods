@@ -7,6 +7,17 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.mask1 {
+  max-width: 600px;
+  height: 350px;
+  overflow-y: scroll;
+}
 .custom-card{
   width:100%;
   margin: auto;
@@ -223,6 +234,25 @@ white-space: nowrap;
   box-shadow: 6px 6px 12px #c5c5c5,
  }
  
+ .menu_container {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+}
+
+.info_container{
+  border: 1px solid gray;
+  border-radius: 25px;
+  /* background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%); */
+  padding: 0px 16px 16px;
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #BFBFBF;
+  background-color: white;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
  button::after {
   content: '';
   width: 0;
