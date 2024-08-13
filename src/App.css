@@ -253,6 +253,13 @@ white-space: nowrap;
   box-shadow: 10px 10px 5px #aaaaaa;
 }
 
+.classbase{
+  border: 1px solid pink;
+}
+.function{
+  border: 1px solid blue;
+}
+
  button::after {
   content: '';
   width: 0;
