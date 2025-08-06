@@ -164,19 +164,340 @@
 
 // export default Cardcontainer;
 
-// Nikhil Sir Method --- Type-3
+// // Nikhil Sir Method --- Type-3[Using Hardcoded Data]
+
+// import Restaurantcard from "./Restaurantcard";
+// import { restaurantList } from "../const/config";
+// import {useState, useEffect} from "react";
+
+// const Cardcontainer = () => {
+//   const [restaurantData, setRestaurantData] = useState(restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+//   const [count, setCount] = useState(0)
+//   // const[text, setText] = useState("");
+//   // let text=""
+
+
+
+//   // console.log("api is called");
+//   //apiCall();
+//   const getRestaurants = async() =>{
+//     // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+//     // const json = await data.json();
+//     // console.log("json", json);
+//     console.log("json");
+//     // setRestaurantData(json);
+//   }
+//   // getRestaurants();
+
+
+//   useEffect(()=>{
+//     getRestaurants();
+//     console.log("useEffect is called")
+//   }, [])
+
+//   console.log("component is rendered")
+//   // console.log("restaurantList", restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+//   // setRestaurantData(restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+//   const filterRestaurants = () =>{
+//     const restaurants = restaurantData.filter((restaurant)=>{
+//       return(
+//         restaurant?.info?.avgRating>=4.5
+//       )
+//     })
+//     setRestaurantData(restaurants);
+//   }
+//   return (
+//     <>
+//     {/* <input type="text" value={text} onChange={(e)=>{setText(e.target.value)}}/>
+//     <input type="text" value={text} onChange={(e)=>{text = e.target.value;
+//       console.log("text", text)
+//     }}/> */}
+//     <button onClick={filterRestaurants}>Top Rated Restaurant</button>
+//     <h1>Count is {count}</h1>
+//     <button onClick={()=>setCount(count+1)}>Increment</button>
+//     {/* <h1>{text}</h1>
+//     <h2>{text}</h2>
+//     <h3>{text}</h3>
+//     <h4>{text}</h4> */}
+//     <div className="container d-flex flex-wrap gap-4">
+//       {
+//         restaurantData.map((restaurant)=>{
+//           return(
+//             <Restaurantcard
+//             key = {restaurant?.info?.id}
+//         // imgUrl={IMG_URL + restaurant?.info?.cloudinaryImageId}
+//         // title={restaurant?.info?.name}
+//         // starRating={restaurant?.info?.avgRating}
+//         // deliveryTime={restaurant?.info?.sla?.deliveryTime }
+//         // cuisines={restaurant?.info?.cuisines.join(", ")}
+//         // location={restaurant?.info?.areaName}
+//         {...restaurant?.info}
+//         />
+//           )
+//         })
+        
+//       }
+//     </div>
+//     </>
+      
+//   );
+// };
+
+// export default Cardcontainer;
+
+// Nikhil Sir Method --- Type-4[Using Api Call]
 
 import Restaurantcard from "./Restaurantcard";
-import { restaurantList } from "../const/config";
+import Shimmer from "./Shimmer";
+import {useState, useEffect} from "react";
+// import "slick-carousel/slick/slick.css"; 
+// import "slick-carousel/slick/slick-theme.css";
 
 const Cardcontainer = () => {
-  console.log("restaurantList", restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  const restaurants = restaurantList[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+  const [count, setCount] = useState(0)
+  const [restaurantData, setRestaurantData] = useState([]);
+  const [loading,setLoading] = useState(true) 
+  const [restaurantCollection,setRestaurantCollection] = useState([]);
+  const [searchtext,setSearchText] = useState("");
+  const [isfailed,setIsFailed] = useState(false);
+  console.log("restaurantList",restaurantData);
 
+  const handleSearchText = (event) => {
+    console.log("function is called ",searchtext);
+    setSearchText(event.target.value);
+  }
+
+  const filterData = () => {
+    const filteredData = restaurantCollection.filter((restaurant) => {
+     return restaurant?.info?.name.toLowerCase().includes(searchtext.toLowerCase())
+    })
+    console.log("filteredData", filteredData);
+    setRestaurantData(filteredData);
+ } 
+    const handleDelivery = () =>{
+       const filterData = restaurantCollection.filter((restaurant) =>{
+        return restaurant?.info?.sla?.deliveryTime <=30
+      })
+      setRestaurantData(filterData);
+   }
+ 
+ const handleVeg = () =>{
+  const filteredData = restaurantCollection.filter((restaurant) => {
+    return restaurant?.info?.veg
+   })
+   setRestaurantData(filteredData);
+}
+const handleLowtoHigh = () =>{
+  const filteredData = restaurantCollection.filter((restaurant) => {
+    return restaurant?.info?.costForTwo
+   })
+   setRestaurantData(filteredData);
+}
+const handleRating = () =>{
+  const filteredData = restaurantCollection.filter((restaurant) => {
+    return restaurant?.info?.avgRating >= 4.5
+   })
+   setRestaurantData(filteredData);
+}
+
+const reset = () =>{
+  setRestaurantData( restaurantCollection)
+}
+
+// useEffect(() =>{
+//   const getRestaurants = async()  =>{
+//     try{
+//     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+//     const json = await data.json();
+//     setLoading(false);
+//     console.log("json",json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+//     setRestaurantData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+//     setRestaurantCollection(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+//     }
+//   catch(err){
+//     setLoading(false)
+//     setIsFailed(true)
+//     console.log("something went wrong,err")
+//   }
+// }
+//   getRestaurants(); 
+// }, [])
+
+// console.log("Component is render ");
+
+// if(loading){
+//   return (
+//     <div className="container d-flex flex-wrap gap-4">
+//   <Shimmer/>
+//   </div>
+//   )
+// }
+
+// if(isfailed){
+//   return(
+//     <div>
+//       <h2>Something Went wrong</h2>
+      
+//     </div>
+//   )
+// }
+
+// return (
+// <div>
+//   <div className="d-flex justify-between">
+//   <div className="container my-3">
+//     <input type="text" className="custom-input" placeholder="Enter name of restaurant " value={searchtext}
+//     onChange={handleSearchText}/>
+//     <button className="button btn-warning" onClick={filterData}>🔍</button>
+//   </div>
+//   <div>
+//   <button className="btn btn-sm btn-danger" onClick={handleDelivery}>Fast Delivery</button>
+//   <button className="btn btn-sm btn-danger" onClick={handleRating}>Top Rated</button>
+//   <button className="btn btn-sm btn-danger" onClick={handleVeg}>Pure Veg</button>
+//   <button className="btn btn-sm btn-danger" onClick={reset}>Show All</button>
+//   </div>
+//   </div>
+// <div className="container d-flex flex-wrap gap-4">
+//   { restaurantData.length!==0 ? restaurantData.map((restaurant) => {
+//     return (
+//       <Restaurantcard
+//       key = {restaurant?.info?.id}
+//         {...restaurant?.info}
+//       />
+//     );
+//   }) : <h1> NO RESTAURANT FOUND </h1>}
+// </div>
+// </div>
+// );
+// };
+// export default Cardcomponent;
+
+  useEffect(()=>{
+    const getRestaurants = async() =>{
+      try{
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const json = await data.json();
+      setLoading(false);
+      console.log("json", json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setRestaurantData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setRestaurantCollection(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      }
+      catch(err){
+        setLoading(false);
+        setIsFailed(true);
+        console.log("something went wrong",err)
+      }
+      
+    }
+    getRestaurants();
+    console.log("useEffect is called")
+  }, [])
+
+  console.log("component is rendered")
+
+  if(loading){
   return (
     <div className="container d-flex flex-wrap gap-4">
+  <Shimmer/>
+  </div>
+  )
+}
+
+  if(isfailed){
+    return(
+      <div className="abhijeet justify-content-center">
+        <img src="./45.jpg"/>
+        <h1 className="sumiti">Ooops...</h1>
+        <h2 className="sumiti">Something Went Wrong</h2>
+      </div>
+    )
+  }
+  const sortBy = (id) => {
+    console.log(id + " from sort");
+    if (id === "Relevance(Default)") {
+      // console.log("done");
+      console.log(restaurantCollection);
+      setRestaurantData(restaurantCollection);
+    } else if (id === "DeliveryTime") {
+      const filterTime = restaurantCollection.filter((restaurant) => {
+        if (restaurant?.info?.sla?.deliveryTime <= 30) {
+          console.log("time" + restaurant?.info?.sla?.deliveryTime);
+        }
+        return restaurant?.info?.sla?.deliveryTime <= 30;
+      });
+
+      setRestaurantData(filterTime);
+    } else if (id === "Rating") {
+      const filterRating = restaurantCollection.filter((restaurant) => {
+        if (restaurant?.info?.avgRating >= 4) {
+          console.log("rating" + restaurant?.info?.avgRating);
+        }
+        return restaurant?.info?.avgRating >= 4;
+      });
+
+      setRestaurantData(filterRating);
+    } else if (id === "Cost:LowtoHigh") {
+      const filterCostLowToHigh = restaurantCollection.sort((a, b) => {
+        // const spl = a.info.costForTwo;
+        // console.log(
+        //   "cost1" +
+        //     (+a.info.costForTwo.match(/\d/g).join("") -
+        //       +b.info.costForTwo.match(/\d/g).join(""))
+        // );
+        return (
+          +a.info.costForTwo.match(/\d/g).join("") -
+          +b.info.costForTwo.match(/\d/g).join("")
+        );
+      });
+      console.log(filterCostLowToHigh);
+      setRestaurantData(filterCostLowToHigh);
+    } else if (id === "Cost:HightoLow") {
+      const filterCostHightoLow = restaurantCollection.sort((a, b) => {
+        // console.log(
+        //   "cost2=" +
+        //     (+b.info.costForTwo.match(/\d/g).join("") -
+        //       +a.info.costForTwo.match(/\d/g).join(""))
+        // );
+        return (
+          +b.info.costForTwo.match(/\d/g).join("") -
+          +a.info.costForTwo.match(/\d/g).join("")
+        );
+      });
+      console.log(filterCostHightoLow);
+      setRestaurantData(filterCostHightoLow);
+    }
+  };
+
+  return (
+    <div>
+      <div className="d-flex justify-between">
+        
+      <div className="container my-3">
+        {/* <input type="text" className="custom_input" placeholder="Enter name of restaurant" value={searchtext} onChange={handleSearchText} /> */}
+        <input type="text" 
+        className="custom_input" 
+        placeholder="Enter name of restaurant" 
+        value={searchtext}
+        onChange={handleSearchText} />
+        <button className="btn btn-lg btn-light" onClick={filterData}>🔍</button>
+      </div>
+      <div className="d-flex gap-2 h-50">
+      <div class="relative mt-2"><select class=" bg-white border border-gray-300 rounded-md px-3 py-2 outline-none"><option value=""><b>Sort By</b></option><option value="20-30">Fast Delivery</option><option value="30-40">Top Rated</option><option value="40-50">Low to High</option><option value="30-40">High to Low</option></select></div>
+        {/* <div className="flex gap-10 text-lg font-normal text-[#747474]">
+      <span class="relative"><select class=" bg-white border border-gray-300 rounded-md px-3 py-1 outline-none" fdprocessedid="8w47aj"><option value="">Fast Delivery</option><option value="20-30">20-30 min</option><option value="30-40">30-40 min</option><option value="40-50">40-50 min</option></select></span>
+      <span class="relative"><select class="bg-white border border-gray-300 rounded-md px-3 py-1 outline-none" fdprocessedid="qip0ox"><option value="">Rating</option><option value="4">4 and above</option><option value="3">3 and above</option><option value="2">2 and above</option><option value="1">1 and above</option></select></span> */}
+        <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-1" onClick={handleDelivery}>Fast Delivery</button>
+        <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-1" onClick={handleRating}>Top Rated</button>
+        <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-1" onClick={handleVeg}>Pure Veg</button>
+        {/* <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-1" onClick={handleLowtoHigh}>Low to High</button> */}
+        <button className="ai btn btn-sm btn-warning mt-2 px-3 mx-1" onClick={reset}>Show All</button>
+      </div>
+      </div>
+      
+    <div className="container d-flex flex-wrap gap-4">
       {
-        restaurants.map((restaurant)=>{
+        restaurantData.length!==0 ? restaurantData.map((restaurant) => {
           return(
             <Restaurantcard
             key = {restaurant?.info?.id}
@@ -188,16 +509,21 @@ const Cardcontainer = () => {
         // location={restaurant?.info?.areaName}
         {...restaurant?.info}
         />
-          )
-        })
+          );
+        }) : (
+          <div style={{ textAlign: 'center', width: '100%' }}>
+            {/* <h1>No Restaurant Found</h1> */}
+            <img src="noimg.png " alt="No Restaurant Found" style={{ maxWidth: '100%', height: '400px' }} />
+          </div>
+        )}
+        </div>
         
-      }
-    </div>
+</div>
+      
   );
 };
 
 export default Cardcontainer;
-
 
 // Nikhil Sir Github
 // import Restaurantcard from "./Restaurantcard";
