@@ -11,3 +11,139 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Custom responsive styles */
+@media (max-width: 768px) {
+  .navbar-brand img {
+    width: 70px !important;
+  }
+  
+  .navbar-nav {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav .nav-item {
+    margin: 0.25rem 0;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .filter-container .card {
+    margin-bottom: 1rem;
+  }
+  
+  .search-container {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn-group .btn {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .card-body .row {
+    margin: 0;
+  }
+  
+  .card-body .col-md-8,
+  .card-body .col-md-4 {
+    padding: 0.5rem;
+  }
+  
+  .modal-dialog {
+    margin: 1rem 0.5rem;
+  }
+  
+  .input-group {
+    flex-wrap: nowrap;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Sticky positioning for filter sidebar on desktop */
+@media (min-width: 992px) {
+  .filter-container .card {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+/* Custom button hover effects */
+.btn:hover {
+  transform: translateY(-1px);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Dropdown menu improvements */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+/* Loading spinner improvements */
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Search suggestions styling */
+.search-container .dropdown-menu {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Card hover effects */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Badge styling */
+.badge {
+  font-size: 0.7rem;
+}
+
+/* Responsive grid improvements */
+.row {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+.col-lg-3, .col-lg-9, .col-md-4, .col-md-8 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* Mobile-first approach for better performance */
+.d-md-none {
+  display: block !important;
+}
+
+@media (min-width: 768px) {
+  .d-md-none {
+    display: none !important;
+  }
+  
+  .d-md-block {
+    display: block !important;
+  }
+}
