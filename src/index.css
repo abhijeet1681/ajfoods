@@ -12,6 +12,174 @@ code {
     monospace;
 }
 
+/* Carousel Styles */
+.carousel-container {
+  overflow: hidden;
+}
+
+.hero-section {
+  position: relative;
+}
+
+.hero-slide {
+  outline: none;
+}
+
+.hero-content {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.min-vh-50 {
+  min-height: 50vh;
+}
+
+.hero-image {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Categories Section */
+.category-card {
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.category-image {
+  transition: transform 0.3s ease;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.1);
+}
+
+.discount-badge {
+  font-size: 0.6rem;
+  transform: scale(0.8);
+}
+
+/* Deals Section */
+.deal-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.deal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.deal-code {
+  font-family: 'Courier New', monospace;
+  border: 2px dashed #dee2e6;
+}
+
+/* Stats Section */
+.stats-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.stat-item {
+  padding: 1rem;
+}
+
+/* Body Component Styles */
+.body-container {
+  background-color: #fafafa;
+}
+
+.restaurants-section {
+  background-color: #fff;
+}
+
+.filters-sticky {
+  position: sticky;
+  top: 2rem;
+}
+
+.search-section .card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.popular-cuisines button {
+  transition: all 0.2s ease;
+}
+
+.popular-cuisines button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.restaurant-cards {
+  min-height: 400px;
+}
+
+.load-more-section .card {
+  background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
+}
+
+/* Feature Cards */
+.feature-card {
+  padding: 2rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Slick Carousel Customization */
+.slick-dots {
+  bottom: 20px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #fff;
+}
+
+.slick-prev, .slick-next {
+  z-index: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #fff;
+  font-size: 20px;
+}
+
 /* Custom responsive styles */
 @media (max-width: 768px) {
   .navbar-brand img {
@@ -43,6 +211,29 @@ code {
   .search-container {
     margin-bottom: 1rem;
   }
+
+  .hero-content {
+    min-height: 300px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .popular-cuisines {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .popular-cuisines .d-flex {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+
+  .feature-card {
+    padding: 1.5rem 1rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -71,6 +262,27 @@ code {
   .navbar-toggler {
     border: none;
     padding: 0.25rem 0.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .category-image {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .stat-item h3 {
+    font-size: 2rem;
+  }
+
+  .filters-sticky {
+    position: static;
   }
 }
 
@@ -146,4 +358,39 @@ code {
   .d-md-block {
     display: block !important;
   }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
