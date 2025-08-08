@@ -25,16 +25,20 @@ import Body from "./components/Body";
 import Footer from "./components/Footer";
 // import { Outlet } from 'react-router-dom';
 import { Outlet, RouterProvider } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 
 // Nikhil Sir 
 const App = () => {
   return (
-    <>
-      <Header />
-      <Outlet/>
-      {/* <Body /> */}
-      <Footer/>
-    </>
+    <AuthProvider>
+      <CartProvider>
+        <Header />
+        <Outlet/>
+        {/* <Body /> */}
+        <Footer/>
+      </CartProvider>
+    </AuthProvider>
   );
 };
 
